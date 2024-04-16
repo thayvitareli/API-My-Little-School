@@ -72,10 +72,13 @@ model class_team {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar(45)
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  maxStudents Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
   school   school?   @relation(fields: [schoolId], references: [id])
   schoolId Int?
   students student[]
+
+  @@map("class_group")
 }
