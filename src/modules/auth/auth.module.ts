@@ -6,11 +6,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     DatabaseModule,
     PassportModule,
+    ConfigModule.forRoot(),
     JwtModule.register({
       global: true,
       secret: process.env.JWT,
