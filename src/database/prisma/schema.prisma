@@ -42,7 +42,7 @@ model collaborator {
   schoolId   Int?
 }
 
-model students {
+model student {
   id                Int    @id @default(autoincrement())
   name              String @db.VarChar(75)
   ra                String @db.VarChar(11)
@@ -63,7 +63,7 @@ model class_team {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  school   school?    @relation(fields: [schoolId], references: [id])
+  school   school?   @relation(fields: [schoolId], references: [id])
   schoolId Int?
-  students students[]
+  students student[]
 }
