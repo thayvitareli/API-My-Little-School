@@ -2,12 +2,14 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
+  Search,
 } from '@nestjs/common';
 import { CreateClassGroupDto } from './dto/create-class-group.dto';
-import { UpdateClassGroupDto } from './dto/update-class-group.dto';
 import ClassTeamRepository from 'src/database/repositories/class-team.repository';
 import CollaboratorRepository from 'src/database/repositories/collaborator.repository';
 import httpMessagesCommon from 'src/common/http-messages.common';
+import { FindManyDto } from './dto/find-many.dto';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ClassGroupsService {
@@ -36,15 +38,23 @@ export class ClassGroupsService {
     return newClass;
   }
 
-  findAll() {
-    return `This action returns all classGroups`;
+  async findAll({ search, skip, take }: FindManyDto) {
+    let where: Prisma.class_teamWhereInput;
+
+    if (Search) where = { name: { contains: search } };
+
+    const records = await this.classTeamRepositoy.findMany(where, skip, take);
+
+    const total = await this.classTeamRepositoy.count(where);
+
+    return { total, records };
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} classGroup`;
-  }
+  async findOne(id: number) {
+    const classGroup = await this.classTeamRepositoy.findOne({ id });
 
-  update(id: number, updateClassGroupDto: UpdateClassGroupDto) {
-    return `This action updates a #${id} classGroup`;
+    if (!classGroup) throw new NotFoundException(httpMessagesCommon.notFound);
+
+    return classGroup;
   }
 }

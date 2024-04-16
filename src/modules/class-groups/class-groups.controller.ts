@@ -3,13 +3,13 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Request,
+  Query,
 } from '@nestjs/common';
 import { ClassGroupsService } from './class-groups.service';
 import { CreateClassGroupDto } from './dto/create-class-group.dto';
-import { UpdateClassGroupDto } from './dto/update-class-group.dto';
+import { FindManyDto } from './dto/find-many.dto';
 
 @Controller('class-groups')
 export class ClassGroupsController {
@@ -25,20 +25,12 @@ export class ClassGroupsController {
   }
 
   @Get()
-  findAll() {
-    return this.classGroupsService.findAll();
+  findAll(@Query() findMany: FindManyDto) {
+    return this.classGroupsService.findAll(findMany);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.classGroupsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateClassGroupDto: UpdateClassGroupDto,
-  ) {
-    return this.classGroupsService.update(+id, updateClassGroupDto);
   }
 }

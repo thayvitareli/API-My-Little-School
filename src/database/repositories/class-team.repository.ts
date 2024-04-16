@@ -34,4 +34,8 @@ export default class ClassTeamRepository {
   async update(id: number, data: Prisma.class_teamUpdateInput) {
     return await this.prisma.class_team.update({ where: { id }, data });
   }
+
+  async count(where: Prisma.class_teamWhereInput) {
+    return await this.prisma.class_team.count({ where });
+  }
 }
