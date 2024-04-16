@@ -5,6 +5,7 @@ import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { StudentsModule } from './modules/students/students.module';
+import { CollaboratorsModule } from './modules/collaborators/collaborators.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { StudentsModule } from './modules/students/students.module';
       isGlobal: true,
     }),
     StudentsModule,
+    CollaboratorsModule,
   ],
   controllers: [],
   providers: [

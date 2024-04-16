@@ -28,10 +28,21 @@ export default class CollaboratorRepository {
       skip,
       take,
       select,
+      orderBy: {
+        created_at: 'desc',
+      },
     });
   }
 
   async update(id: number, data: Prisma.collaboratorUpdateInput) {
     return await this.prisma.collaborator.update({ where: { id }, data });
+  }
+
+  async delete(id: number) {
+    return await this.prisma.collaborator.delete({ where: { id } });
+  }
+
+  async count(where: Prisma.collaboratorWhereInput) {
+    return await this.prisma.collaborator.count({ where });
   }
 }

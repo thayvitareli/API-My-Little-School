@@ -17,7 +17,6 @@ export class AuthService {
 
     if (user) {
       const isValidPassword = await bcrypt.compare(password, user.password);
-
       if (isValidPassword) return user;
 
       throw new BadRequestException(httpMessagesCommon.loginFailed);
@@ -31,7 +30,10 @@ export class AuthService {
 
     return {
       name: user.name,
-      access_token: this.jwtService.sign({ userId: user.id_user }),
+      access_token: this.jwtService.sign({
+        userId: user.id,
+        schoolId: user.schoolId,
+      }),
     };
   }
 }

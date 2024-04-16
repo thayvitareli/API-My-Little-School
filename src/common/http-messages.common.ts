@@ -6,4 +6,5 @@ export default {
   notFound: 'Registro não encontrado',
   studentNotFound: 'Estudante não encontrado',
   raInUse: 'RA já cadastrado',
+  emailInUse: 'E-mail já cadastrado',
 };
