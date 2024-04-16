@@ -6,6 +6,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { StudentsModule } from './modules/students/students.module';
 import { CollaboratorsModule } from './modules/collaborators/collaborators.module';
+import { ClassGroupsModule } from './modules/class-groups/class-groups.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CollaboratorsModule } from './modules/collaborators/collaborators.modul
     }),
     StudentsModule,
     CollaboratorsModule,
+    ClassGroupsModule,
   ],
   controllers: [],
   providers: [

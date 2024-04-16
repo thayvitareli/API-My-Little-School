@@ -5,6 +5,7 @@ export default {
   registeredEmail: 'E-mail já cadastrado',
   notFound: 'Registro não encontrado',
   studentNotFound: 'Estudante não encontrado',
+  collaboratorNotFound: 'Colaborador não encontrado',
   raInUse: 'RA já cadastrado',
   emailInUse: 'E-mail já cadastrado',
 };
