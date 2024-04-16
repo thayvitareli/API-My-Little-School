@@ -43,17 +43,29 @@ model collaborator {
 }
 
 model student {
-  id                Int    @id @default(autoincrement())
-  name              String @db.VarChar(75)
-  ra                String @unique @db.VarChar(11)
-  responsible_name  String @db.VarChar(75)
-  responsible_phone String @db.VarChar(13)
+  id     Int     @id @default(autoincrement())
+  name   String  @db.VarChar(75)
+  ra     String  @unique @db.VarChar(11)
+  status Boolean @default(true)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   class        class_team @relation(fields: [class_teamId], references: [id])
   class_teamId Int
+
+  responsibles responsible[]
+}
+
+model responsible {
+  id     Int     @id @default(autoincrement())
+  name   String  @db.VarChar(75)
+  status Boolean
+  phone  String  @db.VarChar(13)
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  students   student[]
 }
 
 model class_team {
