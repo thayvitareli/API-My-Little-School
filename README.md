@@ -1,9 +1,9 @@
-# School Management System (Projeto em desenvolvimento para fins didáticos) 
+# API My Little School (Projeto em desenvolvimento para fins didáticos) 
 
 ## Introdução
-Este é um projeto de gerenciamento escolar em desenvolvimento, focado no cadastro e gerenciamento de alunos e colaboradores em escolas de ensino fundamental. O sistema é desenvolvido utilizando o framework NestJS,  Prisma ORM e TypeScript, oferecendo uma maneira fácil e segura de interagir com o banco de dados.
+Este é um projeto focado no cadastro e gerenciamento de alunos e colaboradores em escolas de ensino fundamental. O sistema é desenvolvido utilizando o framework NestJS,  Prisma ORM e TypeScript, oferecendo uma maneira fácil e segura de interagir com o banco de dados e utilizada o JWT como forma de autenticação.
 
-## Funcionalidades Principais
+## Principais funcionalidades
 O sistema tem como objetivo principal facilitar o registro e a manutenção de informações relacionadas a alunos e colaboradores em escolas de ensino fundamental. As principais funcionalidades incluem:
 
 ### Cadastro e consulta de Alunos 
