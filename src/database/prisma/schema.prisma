@@ -45,7 +45,7 @@ model collaborator {
 model student {
   id                Int    @id @default(autoincrement())
   name              String @db.VarChar(75)
-  ra                String @db.VarChar(11)
+  ra                String @unique @db.VarChar(11)
   responsible_name  String @db.VarChar(75)
   responsible_phone String @db.VarChar(13)
 
