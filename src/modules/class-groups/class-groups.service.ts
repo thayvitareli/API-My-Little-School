@@ -10,6 +10,7 @@ import CollaboratorRepository from 'src/database/repositories/collaborator.repos
 import httpMessagesCommon from 'src/common/http-messages.common';
 import { FindManyDto } from './dto/find-many.dto';
 import { Prisma } from '@prisma/client';
+import userPvCommon from 'src/common/user-pv.common';
 
 @Injectable()
 export class ClassGroupsService {
@@ -26,7 +27,7 @@ export class ClassGroupsService {
     if (!collaborator)
       throw new NotFoundException(httpMessagesCommon.collaboratorNotFound);
 
-    if (collaborator.privilege !== 1)
+    if (collaborator.privilege !== userPvCommon.admin)
       throw new BadRequestException(httpMessagesCommon.permissionDenied);
 
     const newClass = await this.classTeamRepositoy.create({

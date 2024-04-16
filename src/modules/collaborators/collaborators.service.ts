@@ -10,6 +10,7 @@ import httpMessagesCommon from 'src/common/http-messages.common';
 import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { FindManyDto } from './dto/find-many.dto';
+import userPvCommon from 'src/common/user-pv.common';
 
 @Injectable()
 export class CollaboratorsService {
@@ -25,7 +26,7 @@ export class CollaboratorsService {
       id: userId,
     });
 
-    if (collaborator.privilege !== 1) {
+    if (collaborator.privilege !== userPvCommon.admin) {
       throw new BadRequestException(httpMessagesCommon.permissionDenied);
     }
 
@@ -114,7 +115,7 @@ export class CollaboratorsService {
   async remove(id: number, userId: number) {
     const user = await this.collaboratorRepository.findOne({ id: userId });
 
-    if (user.privilege !== 1)
+    if (user.privilege !== userPvCommon.admin)
       throw new BadRequestException(httpMessagesCommon.permissionDenied);
 
     const collaborator = await this.collaboratorRepository.findOne({ id });

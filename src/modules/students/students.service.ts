@@ -65,7 +65,6 @@ export class StudentsService {
   }
 
   async update(id: number, { class_id, status }: UpdateStudentDto) {
-    console.log(id);
     let data: Prisma.studentUpdateInput = {};
 
     const student = await this.studentRepository.findOne({ id });
