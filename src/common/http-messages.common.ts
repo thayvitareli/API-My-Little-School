@@ -4,4 +4,6 @@ export default {
   registeredPhone: 'Telefone já cadastrado',
   registeredEmail: 'E-mail já cadastrado',
   notFound: 'Registro não encontrado',
+  studentNotFound: 'Estudante não encontrado',
+  raInUse: 'RA já cadastrado',
 };

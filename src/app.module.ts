@@ -4,6 +4,7 @@ import { DatabaseModule } from './database/database.module';
 import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
+import { StudentsModule } from './modules/students/students.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    StudentsModule,
   ],
   controllers: [],
   providers: [

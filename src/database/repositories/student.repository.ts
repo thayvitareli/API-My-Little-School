@@ -33,4 +33,8 @@ export default class StudentRepository {
   async delete(id: number) {
     return await this.prisma.student.delete({ where: { id } });
   }
+
+  async count(where: Prisma.studentWhereInput) {
+    return await this.prisma.student.count({ where });
+  }
 }

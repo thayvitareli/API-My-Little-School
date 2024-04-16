@@ -15,7 +15,6 @@ export class AuthService {
   async validateUser({ email, password }: LoginDto) {
     const user = await this.collaboratorRepository.findOne({ email });
 
-    console.log(email, password);
     if (user) {
       const isValidPassword = await bcrypt.compare(password, user.password);
 
@@ -28,7 +27,6 @@ export class AuthService {
   }
 
   async login({ email, password }: LoginDto) {
-    console.log(email, password);
     const user = await this.validateUser({ email, password });
 
     return {
