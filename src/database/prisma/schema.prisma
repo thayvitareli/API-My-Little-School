@@ -27,9 +27,9 @@ model school {
 }
 
 model collaborator {
-  id_user Int    @id @default(autoincrement())
-  name    String @db.VarChar(100)
-  email   String @unique @db.VarChar(100)
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(100)
+  email String @unique @db.VarChar(100)
 
   phone    String @db.VarChar(11)
   password String @db.VarChar(75)
