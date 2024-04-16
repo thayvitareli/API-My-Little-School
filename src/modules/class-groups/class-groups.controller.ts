@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ClassGroupsService } from './class-groups.service';
 import { CreateClassGroupDto } from './dto/create-class-group.dto';
-import { FindManyDto } from './dto/find-many.dto';
+import { FindManyDto } from 'src/utils/dto/find-many.dto';
 
 @Controller('class-groups')
 export class ClassGroupsController {

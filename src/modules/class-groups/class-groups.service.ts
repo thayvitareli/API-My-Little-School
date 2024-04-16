@@ -8,9 +8,9 @@ import { CreateClassGroupDto } from './dto/create-class-group.dto';
 import ClassTeamRepository from 'src/database/repositories/class-team.repository';
 import CollaboratorRepository from 'src/database/repositories/collaborator.repository';
 import httpMessagesCommon from 'src/common/http-messages.common';
-import { FindManyDto } from './dto/find-many.dto';
 import { Prisma } from '@prisma/client';
 import userPvCommon from 'src/common/user-pv.common';
+import { FindManyDto } from 'src/utils/dto/find-many.dto';
 
 @Injectable()
 export class ClassGroupsService {

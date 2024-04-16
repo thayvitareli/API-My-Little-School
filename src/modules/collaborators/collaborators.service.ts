@@ -9,8 +9,8 @@ import CollaboratorRepository from 'src/database/repositories/collaborator.repos
 import httpMessagesCommon from 'src/common/http-messages.common';
 import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
-import { FindManyDto } from './dto/find-many.dto';
 import userPvCommon from 'src/common/user-pv.common';
+import { FindManyDto } from 'src/utils/dto/find-many.dto';
 
 @Injectable()
 export class CollaboratorsService {
@@ -51,10 +51,13 @@ export class CollaboratorsService {
     return newCollaborator;
   }
 
-  async findAll({ skip, take, name }: FindManyDto) {
+  async findAll({ skip, take, search }: FindManyDto) {
     let where: Prisma.collaboratorWhereInput;
 
-    if (name) where = { name: { contains: name } };
+    if (search)
+      where = {
+        OR: [{ name: { contains: search } }, { email: { contains: search } }],
+      };
 
     const select: Prisma.collaboratorSelect = {
       id: true,
