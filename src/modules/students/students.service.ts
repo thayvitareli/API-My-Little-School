@@ -61,6 +61,24 @@ export class StudentsService {
   async findAll({ name, status, skip, take }: FindManyDto) {
     let where: Prisma.studentWhereInput = {};
 
+    const select: Prisma.studentSelect = {
+      id: true,
+      name: true,
+      ra: true,
+      created_at: true,
+      class: {
+        select: {
+          name: true,
+        },
+      },
+      responsibles: {
+        select: {
+          name: true,
+          phone: true,
+        },
+      },
+    };
+
     if (name) {
       where = { ...where, name: { contains: name } };
     }
@@ -73,7 +91,12 @@ export class StudentsService {
       where = { ...where, status };
     }
 
-    const records = await this.studentRepository.findMany(where, skip, take);
+    const records = await this.studentRepository.findMany(
+      where,
+      skip,
+      take,
+      select,
+    );
 
     const total = await this.studentRepository.count(where);
 
@@ -81,7 +104,24 @@ export class StudentsService {
   }
 
   async findOne(id: number) {
-    const student = await this.studentRepository.findOne({ id });
+    const select: Prisma.studentSelect = {
+      id: true,
+      name: true,
+      ra: true,
+      created_at: true,
+      class: {
+        select: {
+          name: true,
+        },
+      },
+      responsibles: {
+        select: {
+          name: true,
+          phone: true,
+        },
+      },
+    };
+    const student = await this.studentRepository.findOne({ id }, select);
 
     if (!student)
       throw new NotFoundException(httpMessagesCommon.studentNotFound);
