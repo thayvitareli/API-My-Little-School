@@ -8,4 +8,7 @@ export default {
   collaboratorNotFound: 'Colaborador não encontrado',
   raInUse: 'RA já cadastrado',
   emailInUse: 'E-mail já cadastrado',
+  classNotFound: 'Turma não encontrada',
+  responsibleNotFound: 'Responsável não encontrado',
+  classClosed: 'Turma sem vaga disponível',
 };
