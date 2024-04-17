@@ -17,6 +17,7 @@ export class ClassGroupsController {
 
   @Post()
   create(@Body() createClassGroupDto: CreateClassGroupDto, @Request() request) {
+    console.log(request.user);
     return this.classGroupsService.create({
       ...createClassGroupDto,
       schoolId: request.user.schoolId,

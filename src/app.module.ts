@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { StudentsModule } from './modules/students/students.module';
 import { CollaboratorsModule } from './modules/collaborators/collaborators.module';
 import { ClassGroupsModule } from './modules/class-groups/class-groups.module';
+import { ResponsiblesModule } from './modules/responsibles/responsibles.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ClassGroupsModule } from './modules/class-groups/class-groups.module';
     StudentsModule,
     CollaboratorsModule,
     ClassGroupsModule,
+    ResponsiblesModule,
   ],
   controllers: [],
   providers: [

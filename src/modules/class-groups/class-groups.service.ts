@@ -30,9 +30,10 @@ export class ClassGroupsService {
     if (collaborator.privilege !== userPvCommon.admin)
       throw new BadRequestException(httpMessagesCommon.permissionDenied);
 
+    console.log(schoolId);
     const newClass = await this.classTeamRepositoy.create({
       name,
-      school: { connect: { id: schoolId } },
+      school: { connect: { id: Number(schoolId) } },
       maxStudents,
     });
 
