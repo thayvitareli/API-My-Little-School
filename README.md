@@ -28,4 +28,7 @@ O sistema tem como objetivo principal facilitar o registro e a manutenção de i
 - **Prisma:** ORM para Node.js e TypeScript, simplificando a interação com o banco de dados.
 - **TypeScript:** Superconjunto tipado de JavaScript.
 
+## Diagrama Entidade Relacionamento
+
+![DER - My_little_school](https://github.com/thayvitareli/API-My-Little-School/assets/108371984/88d276ba-8d13-4428-aa53-17c197dc5fdc)
 
